@@ -25,7 +25,6 @@ Norwich City
 Watford
 Middlesbrough
 Brentford
-Ipswich Town
 XXX
 La Liga
 3 20
@@ -164,3 +163,4 @@ Alkmaar
 Dnipro Dnipropetrovsk
 Sporting Braga
 Sparta Prague
+XXX

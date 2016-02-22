@@ -19,5 +19,10 @@ class AllLeagues{
 	leagues.add(newLeague);
 	numLeagues++;
     }
-
+    
+    public void sortLeagues(){
+	for(int i = 0; i < numLeagues; i++){
+	    Collections.sort(leagues.get(i).members);
+	}
+    }
 }

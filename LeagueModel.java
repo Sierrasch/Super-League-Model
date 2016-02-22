@@ -9,13 +9,13 @@ public class LeagueModel {
         String leagueName = null;
 	AllLeagues myLeagues = new AllLeagues(); //creates new set of leagues
         
-try {
+	try {
             FileReader fileReader = 
                 new FileReader(fileName);
 
             BufferedReader bufferedReader = 
                 new BufferedReader(fileReader);
-
+	    
             while((leagueName = bufferedReader.readLine()) != null) {
 		String leagueInfo = bufferedReader.readLine();
 		int promotedTeamNum = Integer.parseInt("" + leagueInfo.split(" ")[0]);
@@ -27,30 +27,36 @@ try {
 		    String name = team.split(" ", 2)[1];
 		    Team tempTeam = new Team(name, tempLeague, tempLeague, points);
 		    tempLeague.addTeam(tempTeam);
+		    tempTeam = null;
 		}
 		String relegatedTeam = null;
-		for(int i = 0; i < 5; i++){
+		for(int i = 0; i < 15; i++){
 		    relegatedTeam = bufferedReader.readLine();
 		    Team tempTeam = new Team(relegatedTeam, tempLeague, tempLeague, -1);
 		    tempLeague.addRelegatedTeam(tempTeam);
+		    tempTeam = null;
 		}
 		String breakString = bufferedReader.readLine();
 		myLeagues.addLeague(tempLeague);
+		tempLeague = null;
 	    }  
             bufferedReader.close();         
-        }
-        catch(FileNotFoundException ex) {
-            System.out.println(
-                "Unable to open file '" + 
-                fileName + "'");                
-        }
-        catch(IOException ex) {
-            System.out.println(
-                "Error reading file '" 
-                + fileName + "'");                  
-                    }
-myLeagues.sortLeagues();
-System.out.println("" + myLeagues);
+	}
+	catch(FileNotFoundException ex) {
+	    System.out.println(
+			       "Unable to open file '" + 
+			       fileName + "'");                
+	}
+	catch(IOException ex) {
+	    System.out.println(
+			       "Error reading file '" 
+			       + fileName + "'");                  
+	}
+	myLeagues.sortLeagues();
+	myLeagues.createSuperLeague();
+	myLeagues.sortLeagues();
+	myLeagues.playSeason();
+	System.out.println("" + myLeagues);
 
     }
 }

@@ -25,6 +25,16 @@ Norwich City
 Watford
 Middlesbrough
 Brentford
+Ipswich Town
+Wolverhampton Wanderers
+Derby County
+Blackburn Rovers
+Birmingham City
+Cardiff City
+Charlton Athletic
+Sheffield Wednesday
+Nottingham Forrest
+Leeds United
 XXX
 La Liga
 3 20
@@ -53,6 +63,16 @@ Real Betis
 Las Palmas
 Girona
 Valladolid
+Zaragoza
+Ponferradina
+Mirandes
+Llagostera
+Leganes
+Alcorcon
+Numancia
+Alaves
+Albacete
+Lugo
 XXX
 Bundesliga
 3 18
@@ -79,6 +99,16 @@ Darmstadt
 Karlsruher
 Kaiserslautern
 Leipzig
+Eintracht Braunschweig
+Union Berlin
+Heidenheim
+Nurnberg
+Dusseldorf
+Bochum
+Sandhausen
+Frankfurt
+Greuther Furth
+St. Pauli
 XXX
 Ligue 1
 3 20
@@ -107,6 +137,16 @@ Gazelec Ajaccio
 Angers
 Dijon
 Nancy
+Brest
+Le Havre
+Laval
+Auxerre
+Sochaux
+Niort
+Clermont
+Nimes
+Creteil
+Tours
 XXX
 Serie A
 3 20
@@ -135,9 +175,19 @@ Frosinone
 Bologna
 Vicenza
 Spezia
+Perugia
+Pescara
+Avellino
+Livorno
+Bari
+Trapani
+Ternana
+Latina
+Virtus Lanciano
+Pro Vercelli
 XXX
 Various
-3 20
+5 20
 89 Porto
 78 Benfica
 75 Eindhoven

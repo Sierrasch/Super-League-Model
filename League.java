@@ -25,6 +25,7 @@ class League{
     }
 
     public void addTeam(Team newTeam){
+
 	members.add(newTeam);
 	numTeams++;
     }
@@ -32,8 +33,50 @@ class League{
     public void addRelegatedTeam(Team newTeam){
 	relegatedMembers.add(newTeam);
     }
-    public void playSeason(){
 
+    public Team promoteTop(){
+	Team returnTeam = members.get(0);
+	
+	//sanity check
+	int relegatedTeamCount = relegatedMembers.size();
+	if(relegatedTeamCount == 0){
+	    System.out.println("ERROR: ran out of relegated teams");
+	}
+
+	members.remove(0);
+	members.add(numTeams - 1, relegatedMembers.get(0));
+	members.get(numTeams - 1).probabilityNumber = 25;
+	members.get(numTeams - 1).points = 25;
+	
+	relegatedMembers.remove(0);
+	return returnTeam;
+    }
+	
+    public void playSeason(){
+	for(int i = 0; i < numTeams; i++){
+	    members.get(i).probabilityNumber = members.get(i).points;
+	    members.get(i).points = 0;	
+	}
+	
+	for(int i = 0; i < numTeams; i++){
+	    for(int j = 0; j < numTeams; j++){
+		//note: this will generate two matches for each pair of teams
+		if(i!=j){ //team is not against itself
+		    int randomRange = members.get(i).probabilityNumber + members.get(j).probabilityNumber + 20;
+		    int rand = (int)(Math.random()*randomRange);
+		    if(rand < members.get(i).probabilityNumber){
+			members.get(i).points += 3;
+		    }else if( rand < members.get(i).probabilityNumber + 20){
+			members.get(i).points += 1;
+			members.get(j).points += 1;
+		    }else{
+			members.get(j).points += 3;
+		    }
+		}
+	    }
+	}
+	
+	Collections.sort(members);
 	//runs all the games according to value given to each team. 
 	//sorts the teams by most points
     }

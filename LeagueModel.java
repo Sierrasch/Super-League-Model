@@ -55,7 +55,11 @@ public class LeagueModel {
 	myLeagues.sortLeagues();
 	myLeagues.createSuperLeague();
 	myLeagues.sortLeagues();
-	myLeagues.playSeason();
+	for(int i = 0; i < 50; i++){
+	    myLeagues.playSeason();
+	    myLeagues.relegateAndPromote();
+
+	}	
 	System.out.println("" + myLeagues);
 
     }

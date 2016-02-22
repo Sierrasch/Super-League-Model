@@ -40,6 +40,27 @@ class AllLeagues{
 	     }
 	}
     }
+    
+    public void relegateAndPromote(){
+	ArrayList<Team> relegatedTeams = new ArrayList<Team>();
+	for(int i = 0; i < 6; i++){
+	    relegatedTeams.add(leagues.get(0).members.get(14));
+	    leagues.get(0).members.remove(14);
+	    leagues.get(0).numTeams--;
+	}
+	
+	for(int i = 1; i < 7; i++){
+	    Team tempTeam = leagues.get(i).promoteTop();
+	    tempTeam.points = leagues.get(0).members.get(13).points;
+	    tempTeam.probabilityNumber = leagues.get(0).members.get(13).probabilityNumber;
+	    leagues.get(0).members.add(tempTeam);
+	    leagues.get(0).numTeams++;
+	}
+	 
+	for(int i = 0; i < 6; i++){
+	    relegatedTeams.get(i).homeLeague.relegateHome(relegatedTeams.get(i));
+	}
+    }
 
     public void playSeason(){
 	for(int i = 0; i < numLeagues; i++){

@@ -45,16 +45,25 @@ class League{
 
 	members.remove(0);
 	members.add(numTeams - 1, relegatedMembers.get(0));
-	members.get(numTeams - 1).probabilityNumber = 25;
-	members.get(numTeams - 1).points = 25;
+	members.get(numTeams - 1).probabilityNumber = members.get(numTeams - 2).probabilityNumber - 1;
+	members.get(numTeams - 1).points = members.get(numTeams - 2).probabilityNumber - 1;
 	
 	relegatedMembers.remove(0);
 	return returnTeam;
     }
-	
+
+    public void relegateHome(Team relegatedHere){
+	relegatedHere.points = members.get(0).points;
+	relegatedHere.probabilityNumber = members.get(0).probabilityNumber;
+
+	Team relegatedFrom = members.get(numTeams - 1);
+	members.remove(numTeams - 1);
+	relegatedMembers.add(0, relegatedFrom);
+	members.add(0, relegatedHere);
+    }
     public void playSeason(){
 	for(int i = 0; i < numTeams; i++){
-	    members.get(i).probabilityNumber = members.get(i).points;
+	    members.get(i).probabilityNumber = (members.get(i).probabilityNumber*2 + members.get(i).points) / 3;
 	    members.get(i).points = 0;	
 	}
 	
@@ -77,7 +86,6 @@ class League{
 	}
 	
 	Collections.sort(members);
-	//runs all the games according to value given to each team. 
-	//sorts the teams by most points
+
     }
 }
